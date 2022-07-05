@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding"> 
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <form id="app">
+        <h1 class="titulo">SIMULADOR DE PLAZO FIJO</h1>
+        <div class="contenedor">
+            <label>Nombre y Apellido: </label>
+            <input type="text" v-model="empleado" id="nombreApellido" placeholder="Ingrese su nombre y apellido"/>
+            <div id="error1">
+                <p v-if="empleado === ''">Nombre y/o apellido incorrecto, porfavor vuelva a intentarlo</p>
+            </div>
+        </div>
+        <div class="contenedor">
+            <label>Salario: </label>
+            <input type="number" v-model="sueldoBruto" id="sueldoBruto" placeholder= 0 />
+            <div id="error2">
+                <p v-if="sueldoBruto < 1">Debe ingresar un valor mayor a $ 0</p>
+            </div>
+        </div>
+        <div class="contenedor">
+            <label>Se encuentra afiliado: </label>
+            <input type="checkbox" v-model="sindicato" id="sindicato"/>
+        </div>
+        <button type="button" id="btnCalcular" @click="Calcular">CALCULAR</button>
+        <!-- <button type="button" id="btnReinvertir" @click="calcularReinversion">REINVERTIR</button> -->
+        <!-- <div class="calculoInversion" id="calculoInversion">
+          <p>El monto que recibirá es de ${{salarioNeto.toFixed(2)}}</p>
+        </div> -->
+        <!-- <div class="cuadroReinventir" id="calculoReinvertir"></div> -->
+    </form>
+    <section id="data" class="clear"> 
+        <div class="container">
+        <table class="table" >
+          <thead>
+              <tr>
+                <th>Concepto</th>
+                <th>Monto</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Sueldo Bruto</td>
+                  <td class="dest" id="montoBruto"></td>
+              </tr>
+              <tr>
+                  <td>Jubilacion(11%)</td>
+                  <td class="dest" id="montoJubilacion"></td>
+              </tr>
+              <tr>
+                  <td>Ley 19032(3%)</td>
+                  <td class="dest" id="montoLey"></td>
+              </tr>
+              <tr>
+                  <td>Obra social(3%)</td>
+                  <td class="dest" id="montoObraSocial"></td>
+              </tr>
+              <tr>
+                  <td>Sindicato</td>
+                  <td class="dest" id="montoSindicato"></td>
+              </tr>
+              <tr>
+                <td>Impuesto a las ganancias</td>
+                <td class="dest" id="montoImpGanancias"></td>
+            </tr>
+            <tr>
+                <td>Sueldo Neto</td>
+                <td class="dest" id="montoSueldoNeto"></td>
+            </tr>
+          </tbody>
+      </table>
+    </section>
+</body>
+</html>
